@@ -1,15 +1,13 @@
-Package Name Here
-===================================
+Laravel Explicit Array
+======================
 
-![CI](https://github.com/renoki-co/:package_name/workflows/CI/badge.svg?branch=master)
-[![codecov](https://codecov.io/gh/renoki-co/:package_name/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/:package_name/branch/master)
+![CI](https://github.com/renoki-co/laravel-explicit-array/workflows/CI/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/renoki-co/laravel-explicit-array/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/laravel-explicit-array/branch/master)
 [![StyleCI](https://github.styleci.io/repos/:styleci_code/shield?branch=master)](https://github.styleci.io/repos/:styleci_code)
-[![Latest Stable Version](https://poser.pugx.org/renoki-co/:package_name/v/stable)](https://packagist.org/packages/renoki-co/:package_name)
-[![Total Downloads](https://poser.pugx.org/renoki-co/:package_name/downloads)](https://packagist.org/packages/renoki-co/:package_name)
-[![Monthly Downloads](https://poser.pugx.org/renoki-co/:package_name/d/monthly)](https://packagist.org/packages/renoki-co/:package_name)
-[![License](https://poser.pugx.org/renoki-co/:package_name/license)](https://packagist.org/packages/renoki-co/:package_name)
-
-**Note:** Replace  ```:package_name``` ```:package_description``` ```:package_namespace``` ```:package_service_provider``` ```:styleci_code``` with their correct values in [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE](LICENSE) and [composer.json](composer.json) files, then delete this line.
+[![Latest Stable Version](https://poser.pugx.org/renoki-co/laravel-explicit-array/v/stable)](https://packagist.org/packages/renoki-co/laravel-explicit-array)
+[![Total Downloads](https://poser.pugx.org/renoki-co/laravel-explicit-array/downloads)](https://packagist.org/packages/renoki-co/laravel-explicit-array)
+[![Monthly Downloads](https://poser.pugx.org/renoki-co/laravel-explicit-array/d/monthly)](https://packagist.org/packages/renoki-co/laravel-explicit-array)
+[![License](https://poser.pugx.org/renoki-co/laravel-explicit-array/license)](https://packagist.org/packages/renoki-co/laravel-explicit-array)
 
 This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
 
@@ -26,25 +24,63 @@ You will sometimes get exclusive content on tips about Laravel, AWS or Kubernete
 You can install the package via composer:
 
 ```bash
-composer require renoki-co/:package_name
-```
-
-Publish the config:
-
-```bash
-$ php artisan vendor:publish --provider="RenokiCo\:package_namespace\:package_service_provider" --tag="config"
-```
-
-Publish the migrations:
-
-```bash
-$ php artisan vendor:publish --provider="RenokiCo\:package_namespace\:package_service_provider" --tag="migrations"
+composer require renoki-co/laravel-explicit-array
 ```
 
 ## 🙌 Usage
 
+The original Laravel's `Arr::set()` method treats the dots within the key as separators for nested values. This is expected. The segments will create a nested value `some -> annotation -> com/ttl` with a value of `1800`.
+
 ```php
-$ //
+$annotations = [
+    'some.annotation.com/ttl' => 900,
+];
+
+Arr::set($annotations, 'some.annotation.com/ttl', 1800);
+
+// Current result
+// [
+//     'some' => [
+//         'annotation' => [
+//             'com/ttl' => 1800
+//         ]
+//     ]
+// ]
+
+// Desired result
+// [
+//     'some.annotation.com/ttl' => 1800
+// ]
+```
+
+To fix this, Explicit Array introduces a new `RenokiCo\ExplicitArray\Arr` class, which altered the `::set()` method, so that will make sure to read the segments between quotes as literal keys.
+
+**You may use this class as your regular `Arr` class because it extends the original `\Illuminate\Support\Arr` class.**
+
+```php
+use RenokiCo\ExplicitArray\Arr;
+
+Arr::set($annotations, '"some.annotation.com/ttl"', 1800);
+
+// [
+//     'some.annotation.com/ttl' => 1800
+// ]
+```
+
+This can work with mixed segments, meaning that as long as you keep the dots outside the quotes, you can specify nested values:
+
+```php
+use RenokiCo\ExplicitArray\Arr;
+
+Arr::set($annotations, 'annotations.nested."some.annotation.com/ttl"', 1800);
+
+// [
+//     'annotations' => [
+//         'nested' => [
+//             'some.annotation.com/ttl' => 1800
+//         ]
+//     ]
+// ]
 ```
 
 ## 🐛 Testing

@@ -1,9 +1,9 @@
 {
-    "name": "renoki-co/:package_name",
-    "description": ":package_description",
-    "keywords": ["laravel", "php"],
+    "name": "renoki-co/laravel-explicit-array",
+    "description": "Improved Laravel dot notation for explicit array keys.",
+    "keywords": ["laravel", "php", "arr", "support", "array"],
     "license": "Apache-2.0",
-    "homepage": "https://github.com/renoki-co/:package_name",
+    "homepage": "https://github.com/renoki-co/laravel-explicit-array",
     "authors": [
         {
             "name": "Alex Renoki",
@@ -12,26 +12,24 @@
         }
     ],
     "require": {
-        "php": "^8.0"
+        "illuminate/support": "^7.40|^8.40"
     },
     "autoload": {
         "psr-4": {
-            "RenokiCo\\:package_namespace\\": "src/"
+            "RenokiCo\\ExplicitArray\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RenokiCo\\:package_namespace\\Test\\": "tests"
+            "RenokiCo\\ExplicitArray\\Test\\": "tests"
         }
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
     },
     "require-dev": {
-        "laravel/legacy-factories": "^1.1",
         "mockery/mockery": "^1.4",
         "orchestra/testbench": "^6.22.0",
-        "orchestra/database": "^5.0|^6.0",
         "vimeo/psalm": "4.11.2"
     },
     "config": {
@@ -41,7 +39,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "RenokiCo\\:package_namespace\\:package_service_provider"
+                "RenokiCo\\ExplicitArray\\ExplicitArrayServiceProvider"
             ]
         }
     }
