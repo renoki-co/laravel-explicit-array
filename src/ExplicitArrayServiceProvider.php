@@ -2,10 +2,7 @@
 
 namespace RenokiCo\ExplicitArray;
 
-use Closure;
-use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 
 class ExplicitArrayServiceProvider extends ServiceProvider
 {
