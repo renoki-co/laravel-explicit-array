@@ -9,7 +9,7 @@ Laravel Explicit Array
 [![Monthly Downloads](https://poser.pugx.org/renoki-co/laravel-explicit-array/d/monthly)](https://packagist.org/packages/renoki-co/laravel-explicit-array)
 [![License](https://poser.pugx.org/renoki-co/laravel-explicit-array/license)](https://packagist.org/packages/renoki-co/laravel-explicit-array)
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+Improved Laravel dot notation for explicit array keys.
 
 ## 🤝 Supporting
 
