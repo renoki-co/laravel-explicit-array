@@ -3,7 +3,7 @@ Laravel Explicit Array
 
 ![CI](https://github.com/renoki-co/laravel-explicit-array/workflows/CI/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/renoki-co/laravel-explicit-array/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/laravel-explicit-array/branch/master)
-[![StyleCI](https://github.styleci.io/repos/:styleci_code/shield?branch=master)](https://github.styleci.io/repos/:styleci_code)
+[![StyleCI](https://github.styleci.io/repos/421948177/shield?branch=master)](https://github.styleci.io/repos/421948177)
 [![Latest Stable Version](https://poser.pugx.org/renoki-co/laravel-explicit-array/v/stable)](https://packagist.org/packages/renoki-co/laravel-explicit-array)
 [![Total Downloads](https://poser.pugx.org/renoki-co/laravel-explicit-array/downloads)](https://packagist.org/packages/renoki-co/laravel-explicit-array)
 [![Monthly Downloads](https://poser.pugx.org/renoki-co/laravel-explicit-array/d/monthly)](https://packagist.org/packages/renoki-co/laravel-explicit-array)
