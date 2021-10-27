@@ -19,13 +19,16 @@ class Arr extends SupportArr
     {
         $original = &$array;
         $keys = (array) $keys;
+
         if (count($keys) === 0) {
             return;
         }
+
         foreach ($keys as $key) {
             // if the exact key exists in the top-level, remove it
             if (static::exists($array, $key)) {
                 unset($array[$key]);
+
                 continue;
             }
 
@@ -33,6 +36,7 @@ class Arr extends SupportArr
 
             // clean up before each pass
             $array = &$original;
+
             while (count($parts) > 1) {
                 $part = array_shift($parts);
                 if (isset($array[$part]) && is_array($array[$part])) {
@@ -41,6 +45,7 @@ class Arr extends SupportArr
                     continue 2;
                 }
             }
+
             unset($array[array_shift($parts)]);
         }
     }
