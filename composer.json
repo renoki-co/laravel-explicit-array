@@ -37,7 +37,7 @@
         "mockery/mockery": "^1.5",
         "orchestra/testbench": "^7.0",
         "vimeo/psalm": "4.20.0",
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^9.5"
     },
     "config": {
         "sort-packages": true
