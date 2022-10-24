@@ -35,7 +35,7 @@
     },
     "require-dev": {
         "mockery/mockery": "^1.5",
-        "orchestra/testbench": "^7.6",
+        "orchestra/testbench": "^7.11",
         "vimeo/psalm": "4.24.0",
         "phpunit/phpunit": "^9.5"
     },
