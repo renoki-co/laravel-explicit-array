@@ -36,7 +36,7 @@
     "require-dev": {
         "mockery/mockery": "^1.5",
         "orchestra/testbench": "^7.6",
-        "vimeo/psalm": "4.24.0",
+        "vimeo/psalm": "5.15.0",
         "phpunit/phpunit": "^9.5"
     },
     "config": {
